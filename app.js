@@ -13,20 +13,17 @@ const logger = require("./utils/logger.js");
 const client = require("./utils/client.js");
 // initialize command loader
 const handler = require("./utils/handler.js");
-const sound = require("./utils/soundplayer.js");
-const image = require("./utils/image.js");
 
 // registers stuff and connects the bot
 async function init() {
-  logger.log("info", "Starting esmBot...");
+  logger.log("info", "Starting bot...");
   // register commands and their info
   const commands = await readdir("./commands/");
-  const soundStatus = await sound.checkStatus();
   logger.log("info", `Attempting to load ${commands.length} commands...`);
   for (const commandFile of commands) {
     logger.log("info", `Loading command ${commandFile}...`);
     try {
-      await handler.load(commandFile, soundStatus);
+      await handler.load(commandFile);
     } catch (e) {
       logger.error(`Failed to register command ${commandFile.split(".")[0]}: ${e}`);
     }
@@ -42,24 +39,8 @@ async function init() {
     client.on(eventName, event);
   }
 
-  // connect to image api if enabled
-  if (process.env.API === "true") {
-    for (const server of image.servers) {
-      try {
-        await image.connect(server);
-      } catch (e) {
-        logger.error(e);
-      }
-    }
-  }
-
   // login
   client.connect();
-
-  // post to DBL
-  if (process.env.NODE_ENV === "production" && process.env.DBL !== "") {
-    require("./utils/dbl.js");
-  }
 
   // handle ctrl+c and pm2 stop
   process.on("SIGINT", () => {
@@ -71,7 +52,6 @@ async function init() {
       handler.unload(command);
     }
     client.disconnect();
-    require("./utils/database.js").stop();
     process.exit(0);
   });
 }

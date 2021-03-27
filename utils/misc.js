@@ -21,15 +21,7 @@ exports.clean = async (text) => {
     .replaceAll("`", `\`${String.fromCharCode(8203)}`)
     .replaceAll("@", `@${String.fromCharCode(8203)}`)
     .replaceAll(process.env.TOKEN, optionalReplace(process.env.TOKEN))
-    .replaceAll(process.env.MASHAPE, optionalReplace(process.env.MASHAPE))
-    .replaceAll(process.env.CAT, optionalReplace(process.env.CAT))
-    .replaceAll(process.env.GOOGLE, optionalReplace(process.env.GOOGLE))
-    .replaceAll(process.env.DBL, optionalReplace(process.env.DBL))
-    .replaceAll(process.env.MONGO, optionalReplace(process.env.MONGO))
-    .replaceAll(process.env.TWITTER_KEY, optionalReplace(process.env.TWITTER_KEY))
-    .replaceAll(process.env.CONSUMER_SECRET, optionalReplace(process.env.CONSUMER_SECRET))
-    .replaceAll(process.env.ACCESS_TOKEN, optionalReplace(process.env.ACCESS_TOKEN))
-    .replaceAll(process.env.ACCESS_SECRET, optionalReplace(process.env.ACCESS_SECRET));
+    .replaceAll(process.env.RAPIDAPI, optionalReplace(process.env.RAPIDAPI))
 
   return text;
 };
@@ -68,10 +60,4 @@ exports.decodeEntities = (string) => {
 // define defaults for prefixes and tags
 exports.defaults = {
   prefix: process.env.PREFIX
-};
-exports.tagDefaults = {
-  help: {
-    content: "https://projectlounge.pw/esmBot/help.html",
-    author: "198198681982205953"
-  }
 };

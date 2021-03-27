@@ -2,14 +2,12 @@ const collections = require("./collections.js");
 const logger = require("./logger.js");
 
 // load command into memory
-exports.load = async (command, soundStatus) => {
+exports.load = async (command) => {
   const props = require(`../commands/${command}`);
   if (props.requires === "google" && process.env.GOOGLE === "") return logger.log("info", `Google info not provided in config, skipped loading command ${command}...`);
-  if (props.requires === "cat" && process.env.CAT === "") return logger.log("info", `Cat API info not provided in config, skipped loading command ${command}...`);
-  if (props.requires === "mashape" && process.env.MASHAPE === "") return logger.log("info", `Mashape/RapidAPI info not provided in config, skipped loading command ${command}...`);
-  if (props.requires === "sound" && soundStatus) return logger.log("info", `Failed to connect to some Lavalink nodes, skipped loading command ${command}...`);
-  collections.commands.set(command.split(".")[0], props.run);
-  collections.info.set(command.split(".")[0], {
+  if (props.requires === "mashape" && process.env.RAPIDAPI === "") return logger.log("info", `Mashape/RapidAPI info not provided in config, skipped loading command ${command}...`);
+    collections.commands.set(command.split(".")[0], props.run);
+    collections.info.set(command.split(".")[0], {
     category: props.category,
     description: props.help,
     aliases: props.aliases,

@@ -1,18 +1,12 @@
-# <img src="https://github.com/esmBot/esmBot/raw/master/esmbot.png" width="128"> esmBot
-[![esmBot Support](https://discordapp.com/api/guilds/592399417676529688/embed.png)](https://discord.gg/vfFM7YT) ![GitHub license](https://img.shields.io/github/license/esmBot/esmBot.svg)
+# esmBot-min
+A modified, stateless version of [esmBot](https://github.com/esmBot/esmBot/wiki/Setup). Meant to be run for a few servers only.
 
-
-esmBot is an easily-extendable, multipurpose, and entertainment-focused Discord bot made using [Eris](https://abal.moe/Eris/) with image, music, and utility commands, alongside many others.
-
-[![Top.gg](https://top.gg/api/widget/429305856241172480.svg)](https://top.gg/bot/429305856241172480)
-
-## Usage
-You can invite the bot to your server using this link: https://projectlounge.pw/invite
-
-A command list can be found [here](https://projectlounge.pw/esmBot/help.html).
-
-If you want to self-host the bot, a guide can be found [here](https://github.com/esmBot/esmBot/wiki/Setup).
+Main Changes:
+* Only commands related to image manipulation (and some utility commands)
+* No database (therefore no prefix per server)
+* S3 Uploading (Uses S3 to upload files over 8MB - supports S3 compatible services that use v4 signature)
+* No API server
 
 ## Credits
-Icon by [Stellio](https://twitter.com/SteelStellio).
+The original version of the bot is made by [Essem](https://essem.space/).
 All images, sounds, and fonts are copyright of their respective owners.
