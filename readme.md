@@ -9,4 +9,4 @@ Main Changes:
 
 ## Credits
 The original version of the bot is made by [Essem](https://essem.space/).
-All images, sounds, and fonts are copyright of their respective owners.
+All images, sounds, and fonts are copyright of their respective owners. 
