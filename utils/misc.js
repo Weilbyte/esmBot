@@ -22,6 +22,11 @@ exports.clean = async (text) => {
     .replaceAll("@", `@${String.fromCharCode(8203)}`)
     .replaceAll(process.env.TOKEN, optionalReplace(process.env.TOKEN))
     .replaceAll(process.env.RAPIDAPI, optionalReplace(process.env.RAPIDAPI))
+    .replaceAll(process.env.TENOR, optionalReplace(process.env.TENOR))
+    .replaceAll(process.env.S3_ID, optionalReplace(process.env.S3_ID))
+    .replaceAll(process.env.S3_SECRET, optionalReplace(process.env.S3_SECRET))
+    .replaceAll(process.env.S3_ENDPOINT, optionalReplace(process.env.S3_ENDPOINT))
+    .replaceAll(process.env.S3_BUCKET, optionalReplace(process.env.S3_BUCKET))
 
   return text;
 };
